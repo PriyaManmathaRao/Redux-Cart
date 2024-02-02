@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import AppBar from './Components/AppBar';
+import { useEffect } from 'react';
+import { Container, ThemeProvider} from '@mui/material'
+import theme from './Style/Theme/Index';
+import NavigationBar from './Components/CategoryBar';
+import PromotionsSlider from './Components/Promotions';
+import Promotion from './Components/Promotions';
 
 function App() {
+useEffect(()=>{
+  document.title="Shopping-Cart"
+},[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <Container 
+           maxWidth="xl"
+           sx={{
+             background:'#fff'
+           }}>
+          <AppBar/>
+          <NavigationBar/>
+          <Promotion/>
+        </Container>
+      </ThemeProvider>
+      
     </div>
   );
 }
